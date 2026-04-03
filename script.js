@@ -1,144 +1,120 @@
-// Elements
-const loader = document.getElementById("loader");
-const productsGrid = document.getElementById("productsGrid");
-const featuredGrid = document.getElementById("featuredGrid");
-const searchInput = document.getElementById("searchInput");
-const cartCountEl = document.getElementById("cartCount");
+// Loader
+window.addEventListener("load", ()=>document.getElementById("loader").style.display="none");
 
-// Cart
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-// Dark mode
-if(localStorage.getItem("darkMode")==="true") document.body.classList.add("dark-mode");
-
-// Toggle theme
-document.getElementById("themeToggle").onclick = ()=>{
-  document.body.classList.toggle("dark-mode");
-  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-};
-
-// Products list (📸 صور حقيقية)
+// Products Data
 const productsData = [
-  {
-    id:1, name:"Bosch Cordless Drill",
-    desc:"Drill with 2 batteries & torque control",
-    price:89.99,
-    stars:4.5,
-    img:"https://images.pexels.com/photos/1586485/pexels-photo-1586485.jpeg"
-  },
-  {
-    id:2, name:"Stanley Hammer",
-    desc:"Heavy-duty steel hammer",
-    price:22.50,
-    stars:4.2,
-    img:"https://images.pexels.com/photos/416230/pexels-photo-416230.jpeg"
-  },
-  {
-    id:3, name:"DEWALT Wrench Set",
-    desc:"Adjustable wrench & socket set",
-    price:35.00,
-    stars:4.6,
-    img:"https://images.pexels.com/photos/4018482/pexels-photo-4018482.jpeg"
-  },
-  {
-    id:4, name:"Precision Pliers",
-    desc:"High-quality cutting pliers",
-    price:14.99,
-    stars:4.0,
-    img:"https://images.pexels.com/photos/3945687/pexels-photo-3945687.jpeg"
-  },
-  {
-    id:5, name:"Measuring Tape 5m",
-    desc:"Accurate tape for jobs",
-    price:9.99,
-    stars:4.3,
-    img:"https://images.pexels.com/photos/4951780/pexels-photo-4951780.jpeg"
-  },
-  {
-    id:6, name:"Level Tool",
-    desc:"Bubble level for flat surfaces",
-    price:11.75,
-    stars:4.1,
-    img:"https://images.pexels.com/photos/5399795/pexels-photo-5399795.jpeg"
-  },
-  {
-    id:7, name:"Tool Storage Box",
-    desc:"Lockable storage box",
-    price:49.90,
-    stars:4.4,
-    img:"https://images.pexels.com/photos/164504/pexels-photo-164504.jpeg"
-  },
-  {
-    id:8, name:"Utility Knife",
-    desc:"Multi-use folding knife",
-    price:7.49,
-    stars:3.9,
-    img:"https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg"
-  },
-  {
-    id:9, name:"Safety Gloves Set",
-    desc:"Pair of tough gloves",
-    price:5.99,
-    stars:4.0,
-    img:"https://images.pexels.com/photos/1300540/pexels-photo-1300540.jpeg"
-  },
-  {
-    id:10, name:"Flashlight LED",
-    desc:"Bright LED flashlight",
-    price:18.25,
-    stars:4.7,
-    img:"https://images.pexels.com/photos/3832013/pexels-photo-3832013.jpeg"
-  },
+  { id:1,name:"Cordless Drill",desc:"مثقاب كهربائي لاسلكي مع بطارية قوية.",price:89.99,stars:4.6,img:"https://images.pexels.com/photos/1586485/pexels-photo-1586485.jpeg",category:"electric"},
+  { id:2,name:"Steel Hammer",desc:"مطرقة فولاذية قوية لتحمل الاستخدام اليومي.",price:22.50,stars:4.4,img:"https://images.pexels.com/photos/416230/pexels-photo-416230.jpeg",category:"hand"},
+  { id:3,name:"Socket Wrench Set",desc:"طقم مقابس ورؤوس متعدد الأحجام.",price:39.95,stars:4.5,img:"https://images.pexels.com/photos/4018482/pexels-photo-4018482.jpeg",category:"hand"},
+  { id:4,name:"Adjustable Wrench",desc:"مفتاح قابل للتعديل يناسب مجموعة واسعة من الأحجام.",price:14.99,stars:4.2,img:"https://images.pexels.com/photos/3945687/pexels-photo-3945687.jpeg",category:"hand"},
+  { id:5,name:"Precision Pliers",desc:"كماشة دقيقة وقوية للقص والإمساك.",price:12.99,stars:4.1,img:"https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg",category:"hand"},
+  { id:6,name:"Tape Measure 5m",desc:"شريط قياس 5 أمتار.",price:9.99,stars:4.3,img:"https://images.pexels.com/photos/4951780/pexels-photo-4951780.jpeg",category:"hand"},
+  { id:7,name:"Utility Knife",desc:"سكين متعدد الاستخدامات.",price:7.49,stars:4.0,img:"https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg",category:"hand"},
+  { id:8,name:"Angle Grinder",desc:"جلاخة زاوية قوية للقص والجلخ.",price:55.00,stars:4.6,img:"https://images.pexels.com/photos/3832013/pexels-photo-3832013.jpeg",category:"electric"},
+  { id:9,name:"Circular Saw",desc:"منشار كهربائي دائري لقطع الأخشاب.",price:65.75,stars:4.4,img:"https://images.pexels.com/photos/1587763/pexels-photo-1587763.jpeg",category:"electric"},
+  { id:10,name:"Toolbox",desc:"صندوق أدوات قوي ومنظم.",price:49.90,stars:4.5,img:"https://images.pexels.com/photos/164504/pexels-photo-164504.jpeg",category:"hand"}
 ];
 
-// render stars
-function starHTML(rating){
-  let whole = Math.floor(rating);
-  let half = rating - whole >= .5;
-  let html = "";
-  for(let i=0;i<whole;i++) html += "⭐";
-  if(half) html += "✴️";
-  return html;
+// DOM Elements
+const productsGrid = document.getElementById("productsGrid");
+const searchInput = document.getElementById("searchInput");
+const cartSidebar = document.getElementById("cartSidebar");
+const cartItemsContainer = document.getElementById("cartItems");
+const cartTotalEl = document.getElementById("cartTotal");
+const cartIcon = document.getElementById("cartIcon");
+const closeCartBtn = document.querySelector(".close-cart");
+const checkoutBtn = document.getElementById("checkoutBtn");
+const cartCountEl = document.getElementById("cartCount");
+const darkToggle = document.getElementById("darkToggle");
+
+// Cart
+let cart = JSON.parse(localStorage.getItem("cart"))||[];
+
+// Display Products
+function displayProducts(products){
+  productsGrid.innerHTML="";
+  products.forEach(p=>{
+    const card = document.createElement("div");
+    card.className="product-card";
+    card.innerHTML=`
+      <img src="${p.img}" alt="${p.name}">
+      <div class="info">
+        <h4>${p.name}</h4>
+        <p>${p.desc}</p>
+        <div class="stars">${"★".repeat(Math.floor(p.stars))}</div>
+        <div class="price">$${p.price}</div>
+        <button onclick="addToCart(${p.id})">Add to Cart</button>
+      </div>
+    `;
+    productsGrid.appendChild(card);
+  });
+}
+displayProducts(productsData);
+
+// Filter Categories
+document.querySelectorAll("nav ul li").forEach(li=>{
+  li.addEventListener("click", ()=>{
+    const cat = li.dataset.category;
+    const filtered = cat==="all"?productsData:productsData.filter(p=>p.category===cat);
+    displayProducts(filtered);
+  });
+});
+
+// Search
+searchInput.addEventListener("input", ()=> {
+  const val = searchInput.value.toLowerCase();
+  const filtered = productsData.filter(p=>p.name.toLowerCase().includes(val)||p.desc.toLowerCase().includes(val));
+  displayProducts(filtered);
+});
+
+// Cart Functions
+function updateCartUI(){
+  cartItemsContainer.innerHTML="";
+  let total=0;
+  cart.forEach((item,index)=>{
+    total+=item.price*item.qty;
+    const div=document.createElement("div");
+    div.className="cart-item";
+    div.innerHTML=`<span>${item.name} x${item.qty}</span>
+    <span>$${(item.price*item.qty).toFixed(2)}</span>
+    <div>
+      <button onclick="changeQty(${index},1)">+</button>
+      <button onclick="changeQty(${index},-1)">-</button>
+      <button onclick="removeItem(${index})">❌</button>
+    </div>`;
+    cartItemsContainer.appendChild(div);
+  });
+  cartTotalEl.innerText=total.toFixed(2);
+  cartCountEl.innerText=cart.length;
+  localStorage.setItem("cart",JSON.stringify(cart));
 }
 
-// render product card
-function renderProduct(product){
-  const div = document.createElement("div");
-  div.className = "tool";
-  div.innerHTML = `
-    <img src="${product.img}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p class="stars">${starHTML(product.stars)}</p>
-    <p class="price">$${product.price.toFixed(2)}</p>
-    <button onclick="goToProduct(${product.id})">View Details</button>
-  `;
-  return div;
+function addToCart(id){
+  let item = productsData.find(p=>p.id===id);
+  let exist = cart.find(i=>i.id===id);
+  if(exist) exist.qty++; else cart.push({...item,qty:1});
+  updateCartUI();
 }
 
-// populate grids
-function populateProducts(list){
-  productsGrid.innerHTML = "";
-  list.forEach(p=> productsGrid.append(renderProduct(p)));
+function changeQty(index,amount){
+  cart[index].qty+=amount;
+  if(cart[index].qty<1) cart.splice(index,1);
+  updateCartUI();
 }
 
-// featured (top 5)
-featuredGrid.innerHTML = "";
-productsData.slice(0,5).forEach(p=> featuredGrid.append(renderProduct(p)));
+function removeItem(index){ cart.splice(index,1); updateCartUI(); }
 
-// initial
-populateProducts(productsData);
+// Cart Sidebar Toggle
+cartIcon.addEventListener("click", ()=>cartSidebar.style.right="0");
+closeCartBtn.addEventListener("click", ()=>cartSidebar.style.right="-400px");
+checkoutBtn.addEventListener("click", ()=>alert("Checkout page coming soon!"));
 
-// search filter
-searchInput.oninput = ()=> {
-  let q = searchInput.value.toLowerCase();
-  populateProducts(productsData.filter(p => p.name.toLowerCase().includes(q)));
-}
+// Dark Mode
+darkToggle.addEventListener("click", ()=>{
+  document.body.classList.toggle("dark-mode");
+  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+});
+if(localStorage.getItem("darkMode")==="true") document.body.classList.add("dark-mode");
 
-// page ready
-window.onload = ()=> loader.style.display="none";
-
-// go to product page
-function goToProduct(id){
-  localStorage.setItem("productId", id);
-  location.href="product.html";
-}
+// Initial Cart Update
+updateCartUI();
