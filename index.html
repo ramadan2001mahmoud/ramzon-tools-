@@ -1,12 +1,51 @@
-<div class="product-card">
-  <div class="carousel">
-    <img src="..." alt="Tool Image" class="active">
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzon Tools</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">Loading Ramzon Tools...</div>
+
+<!-- Header -->
+<header>
+  <div class="logo">Ramzon Tools</div>
+  <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
+  <div class="icons">
+    <span id="cartIcon">🛒<span id="cartCount">0</span></span>
+    <span id="darkToggle">🌙</span>
   </div>
-  <div class="info">
-    <h4>Tool Name</h4>
-    <div class="stars">★★★★</div>
-    <p>Tool description</p>
-    <div class="price">$99.99</div>
-    <button onclick="addToCart(id)">Add to Cart</button>
-  </div>
+</header>
+
+<!-- Sidebar Categories -->
+<aside class="sidebar">
+  <h3>الأقسام</h3>
+  <ul>
+    <li data-category="all" class="active">الكل</li>
+    <li data-category="electric">أدوات كهربائية</li>
+    <li data-category="hand">أدوات يدوية</li>
+  </ul>
+</aside>
+
+<!-- Products Grid -->
+<main id="productsGrid"></main>
+
+<!-- Pagination -->
+<div id="pagination" class="pagination"></div>
+
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+  <span class="close-cart">&times;</span>
+  <h3>سلة التسوق</h3>
+  <div id="cartItems"></div>
+  <p>الإجمالي: $<span id="cartTotal">0</span></p>
+  <button id="checkoutBtn">Checkout</button>
 </div>
+
+<script src="script.js"></script>
+</body>
+</html>
