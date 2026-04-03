@@ -1,34 +1,35 @@
-// DOM Elements
-const loader = document.getElementById('loader');
-const toolsGrid = document.getElementById('toolsGrid');
-const searchInput = document.getElementById('searchInput');
-const themeToggle = document.getElementById('themeToggle');
+// DOM
+const loader=document.getElementById('loader');
+const toolsGrid=document.getElementById('toolsGrid');
+const searchInput=document.getElementById('searchInput');
+const themeToggle=document.getElementById('themeToggle');
 
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('modalDescription');
-const modalPrice = document.getElementById('modalPrice');
-const modalAddToCart = document.getElementById('modalAddToCart');
-const closeModal = document.querySelector('.close');
+const modal=document.getElementById('modal');
+const modalTitle=document.getElementById('modalTitle');
+const modalDescription=document.getElementById('modalDescription');
+const modalPrice=document.getElementById('modalPrice');
+const modalImg=document.getElementById('modalImg');
+const modalAddToCart=document.getElementById('modalAddToCart');
+const closeModal=document.querySelector('.close');
 
-const cartSidebar = document.getElementById('cartSidebar');
-const cartItemsContainer = document.getElementById('cartItems');
-const cartTotalEl = document.getElementById('cartTotal');
-const cartIcon = document.getElementById('cartIcon');
-const checkoutBtn = document.getElementById('checkoutBtn');
-const closeCartBtn = document.querySelector('.close-cart');
+const cartSidebar=document.getElementById('cartSidebar');
+const cartItemsContainer=document.getElementById('cartItems');
+const cartTotalEl=document.getElementById('cartTotal');
+const cartIcon=document.getElementById('cartIcon');
+const checkoutBtn=document.getElementById('checkoutBtn');
+const closeCartBtn=document.querySelector('.close-cart');
 
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart=JSON.parse(localStorage.getItem('cart'))||[];
 
 // Dark Mode
-if(localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark-mode');
-themeToggle.addEventListener('click', ()=>{
+if(localStorage.getItem('darkMode')==='true') document.body.classList.add('dark-mode');
+themeToggle.addEventListener('click',()=>{
   document.body.classList.toggle('dark-mode');
-  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+  localStorage.setItem('darkMode',document.body.classList.contains('dark-mode'));
 });
 
 // Tools Data
-const toolsData = [
+const toolsData=[
   {name:"Hammer",desc:"مطرقة قوية ومتينة لجميع أعمال البناء.",price:15,img:"https://via.placeholder.com/200x150?text=Hammer"},
   {name:"Screwdriver Set",desc:"مجموعة مفكات لجميع الاستخدامات.",price:12,img:"https://via.placeholder.com/200x150?text=Screwdriver+Set"},
   {name:"Cordless Drill",desc:"مثقاب كهربائي لاسلكي متعدد السرعات.",price:45,img:"https://via.placeholder.com/200x150?text=Cordless+Drill"},
@@ -41,7 +42,7 @@ const toolsData = [
   {name:"Safety Gloves",desc:"قفازات حماية للوقاية من الإصابات.",price:4,img:"https://via.placeholder.com/200x150?text=Safety+Gloves"}
 ];
 
-// Render Tools
+// Render
 function renderTools(tools){
   toolsGrid.innerHTML="";
   tools.forEach(tool=>{
@@ -54,6 +55,7 @@ function renderTools(tools){
         modalTitle.innerText=tool.name;
         modalDescription.innerText=tool.desc;
         modalPrice.innerText="$"+tool.price;
+        modalImg.src=tool.img;
         modal.style.display="block";
         modalAddToCart.onclick=()=>addToCart(tool);
       }
@@ -68,10 +70,10 @@ searchInput.addEventListener('input',()=>{
   renderTools(toolsData.filter(tool=>tool.name.toLowerCase().includes(q)));
 });
 
-// Cart Functions
+// Cart
 function addToCart(tool){
   const exist=cart.find(i=>i.name===tool.name);
-  if(exist){ exist.qty++; } else { cart.push({...tool,qty:1}); }
+  if(exist) exist.qty++; else cart.push({...tool,qty:1});
   localStorage.setItem('cart',JSON.stringify(cart));
   updateCartUI();
 }
@@ -90,22 +92,21 @@ function updateCartUI(){
   document.getElementById('cartCount').innerText=cart.length;
 }
 
-// Cart Sidebar toggle
+// Cart toggle
 cartIcon.addEventListener('click',()=>cartSidebar.style.right="0");
 closeCartBtn.addEventListener('click',()=>cartSidebar.style.right="-350px");
 
-// Modal Close
+// Modal close
 closeModal.addEventListener('click',()=>modal.style.display="none");
 window.addEventListener('click',e=>{if(e.target==modal) modal.style.display="none";});
 
 // Checkout
-checkoutBtn.addEventListener('click',()=>{ alert("Checkout feature coming soon!"); });
+checkoutBtn.addEventListener('click',()=>alert("Checkout coming soon!"));
 
-// Initialize
+// Init
 document.addEventListener('DOMContentLoaded',()=>{
   renderTools(toolsData);
   loader.style.display="none";
   toolsGrid.style.display="grid";
-  const lastCart=JSON.parse(localStorage.getItem('cart'));
-  if(lastCart){ cart=lastCart; updateCartUI(); }
+  if(localStorage.getItem('cart')){cart=JSON.parse(localStorage.getItem('cart'));updateCartUI();}
 });
