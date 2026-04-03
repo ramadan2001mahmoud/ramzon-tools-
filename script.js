@@ -19,23 +19,18 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
 });
 
-// Tools Data
+// Tools Data – 10 أدوات شائعة
 const toolsData = [
-  { name: "Hammer", description: "Heavy-duty hammer for all construction needs." },
-  { name: "Screwdriver Set", description: "Set of flathead and Philips screwdrivers." },
-  { name: "Wrench", description: "Adjustable wrench suitable for all sizes." },
-  { name: "Pliers", description: "Strong pliers for gripping and cutting." },
-  { name: "Measuring Tape", description: "25ft tape for precise measurements." },
-  { name: "Drill Machine", description: "Electric drill with multiple speed settings." },
-  { name: "Saw", description: "Hand saw for wood cutting." },
-  { name: "Level Tool", description: "Ensures surfaces are perfectly horizontal." },
-  { name: "Safety Gloves", description: "Protects your hands during work." },
-  { name: "Toolbox", description: "Organize all your tools in one place." },
-  { name: "Paint Brush Set", description: "Set of brushes for all painting tasks." },
-  { name: "Utility Knife", description: "Sharp knife for cutting various materials." },
-  { name: "Sandpaper Pack", description: "Different grit sandpapers for smooth finishes." },
-  { name: "Flashlight", description: "Bright flashlight for working in dark areas." },
-  { name: "Wire Cutter", description: "Cuts wires cleanly and safely." }
+  { name: "Hammer", description: "مطرقة قوية ومتينة لجميع أعمال البناء والصيانة." },
+  { name: "Screwdriver Set", description: "مجموعة مفكات (Philips & Flathead) لجميع الاستخدامات." },
+  { name: "Cordless Drill", description: "مثقاب كهربائي لاسلكي متعدد السرعات مع بطارية طويلة العمر." },
+  { name: "Adjustable Wrench", description: "مفتاح قابل للتعديل لتناسب جميع الأحجام." },
+  { name: "Pliers", description: "كماشة قوية للقص والقبض على المعادن والأسلاك." },
+  { name: "Measuring Tape", description: "شريط قياس 5 متر/25 قدم لقياسات دقيقة." },
+  { name: "Level Tool", description: "ميزان للتأكد من تساوي الأسطح بدقة عالية." },
+  { name: "Utility Knife", description: "سكين متعدد الاستخدامات للقص الدقيق." },
+  { name: "Toolbox", description: "صندوق أدوات متين لتنظيم جميع أدواتك." },
+  { name: "Safety Gloves", description: "قفازات حماية للوقاية من الإصابات أثناء العمل." }
 ];
 
 // Render Tools
@@ -76,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', filterTools);
 
-    // Highlight last selected tool
+    // Show last selected tool
     const lastTool = localStorage.getItem('lastSelectedTool');
-    if(lastTool) alert(`Last selected tool: ${lastTool}`);
+    if(lastTool) console.log(`Last selected tool: ${lastTool}`);
   } catch(error) {
     loader.innerHTML = "Failed to load tools. Check console.";
     console.error("Error loading tools:", error);
