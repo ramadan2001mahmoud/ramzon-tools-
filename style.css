@@ -40,6 +40,12 @@ body.dark-mode .product-card .info p{color:#ccc;}
 .product-card .info button{width:100%;padding:8px;background:#ff6600;color:#fff;border:none;border-radius:5px;cursor:pointer;transition:0.2s;}
 .product-card .info button:hover{background:#e65c00;}
 
+/* Pagination */
+.pagination{display:flex;justify-content:center;margin:20px 0;gap:10px;}
+.pagination button{padding:5px 10px;border:none;border-radius:4px;background:#ff6600;color:#fff;cursor:pointer;}
+.pagination button.active{background:#e65c00;}
+.pagination button:hover{background:#e65c00;}
+
 /* Cart Sidebar */
 .cart-sidebar{position:fixed;top:0;right:-400px;width:400px;height:100%;background:#fff;z-index:1000;padding:20px;box-shadow:-3px 0 15px rgba(0,0,0,0.2);transition:right 0.3s ease;overflow-y:auto;}
 body.dark-mode .cart-sidebar{background:#1f1f1f;color:#eee;}
