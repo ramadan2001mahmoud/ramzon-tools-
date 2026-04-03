@@ -1,83 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ramzon Tools - Free online text tools, converters, and utilities. Fast, modern, and easy to use.">
-    <meta name="keywords" content="text tools, word counter, password generator, json formatter, text converter">
-    <meta name="author" content="Ramzon Tools">
-    <title>Ramzon Tools - Free Online Text Tools & Utilities</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramzon Tools Pro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loader" class="loader">
-        <div class="loader-content">
-            <div class="loader-icon">🔧</div>
-            <p>Loading Ramzon Tools...</p>
-        </div>
+
+  <!-- Dark Mode Toggle -->
+  <div id="themeToggleContainer">
+    <button id="themeToggle">Toggle Dark Mode</button>
+  </div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <span>Loading Ramzon Tools…</span>
+  </div>
+
+  <!-- Search Bar -->
+  <div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Search tools...">
+  </div>
+
+  <!-- Tools Grid -->
+  <div id="toolsGrid"></div>
+
+  <!-- Tool Details Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <button id="buyButton">Buy Now</button>
     </div>
+  </div>
 
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-brand">
-                <h1>🔧 Ramzon Tools</h1>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#tools" class="nav-link">Tools</a></li>
-            </ul>
-            <div class="theme-toggle" id="themeToggle">
-                <span class="sun">☀️</span>
-                <span class="moon">🌙</span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Fast. Simple. Powerful.</h1>
-                    <p class="hero-subtitle">Free online tools for text processing, formatting, and generation. No sign-up required.</p>
-                    <div class="hero-buttons">
-                        <a href="#tools" class="btn btn-primary">Explore Tools</a>
-                        <button class="btn btn-secondary" onclick="scrollToTop()">↑ Back to Top</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tools Section -->
-        <section id="tools" class="section tools-section">
-            <div class="container">
-                <h2 class="section-title">All Tools</h2>
-                <div class="tools-grid" id="toolsGrid">
-                    <!-- Tools will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Ramzon Tools - All Rights Reserved</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
