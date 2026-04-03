@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Ramzon Tools – Amazon Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramzon Tools</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Loader -->
-  <div id="loader">
-    <div class="spinner"></div>
-  </div>
+  <div id="loader">Loading Ramzon Tools...</div>
 
   <!-- Header -->
   <header>
     <div class="logo">Ramzon Tools</div>
-
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search products...">
+    <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
+    <div class="icons">
+      <span id="cartIcon">🛒<span id="cartCount">0</span></span>
+      <span id="darkToggle">🌙</span>
     </div>
-
-    <nav class="nav-icons">
-      <a href="#">Account</a>
-      <a href="#" id="cartIcon">🛒 <span id="cartCount">0</span></a>
-      <button id="themeToggle">🌙</button>
-    </nav>
   </header>
 
-  <!-- Featured Section -->
-  <section class="featured">
-    <h2>🔥 Best Sellers</h2>
-    <div id="featuredGrid"></div>
-  </section>
+  <!-- Categories -->
+  <nav>
+    <ul>
+      <li data-category="all">الكل</li>
+      <li data-category="electric">كهربائية</li>
+      <li data-category="hand">يدوية</li>
+    </ul>
+  </nav>
 
   <!-- Products Grid -->
-  <main id="productsGrid"></main>
+  <section id="productsGrid"></section>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <span class="close-cart">&times;</span>
+    <h3>سلة التسوق</h3>
+    <div id="cartItems"></div>
+    <p>الإجمالي: $<span id="cartTotal">0</span></p>
+    <button id="checkoutBtn">Checkout</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
