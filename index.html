@@ -14,16 +14,16 @@
     <span>Loading Ramzon Tools…</span>
   </div>
 
-  <!-- Header -->
+  <!-- Header شبيه Amazon -->
   <header>
     <div class="logo">Ramzon Tools</div>
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search tools...">
     </div>
-    <div class="cart-icon" id="cartIcon">
-      🛒 <span id="cartCount">0</span>
+    <div class="icons">
+      <div class="cart-icon" id="cartIcon">🛒 <span id="cartCount">0</span></div>
+      <button id="themeToggle">🌙</button>
     </div>
-    <button id="themeToggle">Toggle Dark Mode</button>
   </header>
 
   <!-- Tools Grid -->
@@ -33,6 +33,7 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
+      <img id="modalImg" src="" alt="Tool" style="width:200px; margin-bottom:10px;">
       <h2 id="modalTitle"></h2>
       <p id="modalDescription"></p>
       <p id="modalPrice"></p>
@@ -42,11 +43,11 @@
 
   <!-- Cart Sidebar -->
   <div id="cartSidebar" class="cart-sidebar">
+    <span class="close-cart">&times;</span>
     <h3>Your Cart</h3>
     <div id="cartItems"></div>
     <p>Total: $<span id="cartTotal">0</span></p>
     <button id="checkoutBtn">Checkout</button>
-    <span class="close-cart">&times;</span>
   </div>
 
   <script src="script.js"></script>
