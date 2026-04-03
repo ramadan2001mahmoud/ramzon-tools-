@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ramzon Tools</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzon Tools</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Loader -->
-  <div id="loader">Loading Ramzon Tools...</div>
+<!-- Loader -->
+<div id="loader">Loading Ramzon Tools...</div>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">Ramzon Tools</div>
-    <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
-    <div class="icons">
-      <span id="cartIcon">🛒<span id="cartCount">0</span></span>
-      <span id="darkToggle">🌙</span>
-    </div>
-  </header>
-
-  <!-- Categories -->
-  <nav>
-    <ul>
-      <li data-category="all">الكل</li>
-      <li data-category="electric">كهربائية</li>
-      <li data-category="hand">يدوية</li>
-    </ul>
-  </nav>
-
-  <!-- Products Grid -->
-  <section id="productsGrid"></section>
-
-  <!-- Cart Sidebar -->
-  <div id="cartSidebar" class="cart-sidebar">
-    <span class="close-cart">&times;</span>
-    <h3>سلة التسوق</h3>
-    <div id="cartItems"></div>
-    <p>الإجمالي: $<span id="cartTotal">0</span></p>
-    <button id="checkoutBtn">Checkout</button>
+<!-- Header -->
+<header>
+  <div class="logo">Ramzon Tools</div>
+  <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
+  <div class="icons">
+    <span id="cartIcon">🛒<span id="cartCount">0</span></span>
+    <span id="darkToggle">🌙</span>
   </div>
+</header>
 
-  <script src="script.js"></script>
+<!-- Categories -->
+<nav>
+  <ul>
+    <li data-category="all" class="active">الكل</li>
+    <li data-category="electric">كهربائية</li>
+    <li data-category="hand">يدوية</li>
+  </ul>
+</nav>
+
+<!-- Products Grid -->
+<section id="productsGrid"></section>
+
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+  <span class="close-cart">&times;</span>
+  <h3>سلة التسوق</h3>
+  <div id="cartItems"></div>
+  <p>الإجمالي: $<span id="cartTotal">0</span></p>
+  <button id="checkoutBtn">Checkout</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
