@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramzon Tools</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramzon Tools</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">Ramzon</div>
+        <ul class="nav-menu">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">الأدوات</a></li>
+            <li><a href="#">عروض</a></li>
+            <li><a href="#">اتصل بنا</a></li>
+        </ul>
+        <div id="themeToggle" class="theme-toggle">🌙</div>
+        <div id="navToggle" class="nav-toggle">☰</div>
+    </nav>
 
-<!-- Loader -->
-<div id="loader">Loading Ramzon Tools...</div>
+    <!-- شريط الأدوات الأفقي -->
+    <div class="tools-bar">
+        <div class="tool-item"><img src="images/hammer.png" alt="مطرقة"><span>مطرقة</span></div>
+        <div class="tool-item"><img src="images/screwdriver.png" alt="مفك"><span>مفك</span></div>
+        <div class="tool-item"><img src="images/wrench.png" alt="مفتاح"><span>مفتاح</span></div>
+        <div class="tool-item"><img src="images/drill.png" alt="مثقاب"><span>مثقاب</span></div>
+        <div class="tool-item"><img src="images/saw.png" alt="منشار"><span>منشار</span></div>
+    </div>
 
-<!-- Header -->
-<header>
-  <div class="logo">Ramzon Tools</div>
-  <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
-  <div class="icons">
-    <span id="cartIcon">🛒<span id="cartCount">0</span></span>
-    <span id="darkToggle">🌙</span>
-  </div>
-</header>
+    <!-- شبكة المنتجات -->
+    <section class="products-section">
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="images/hammer.png" alt="مطرقة">
+                <h3>مطرقة قوية</h3>
+                <p>سعر: 120 جنيه</p>
+                <button>اشترِ الآن</button>
+            </div>
+            <div class="product-card">
+                <img src="images/screwdriver.png" alt="مفك">
+                <h3>مجموعة مفكات</h3>
+                <p>سعر: 80 جنيه</p>
+                <button>اشترِ الآن</button>
+            </div>
+            <div class="product-card">
+                <img src="images/wrench.png" alt="مفتاح">
+                <h3>مفتاح ربط</h3>
+                <p>سعر: 90 جنيه</p>
+                <button>اشترِ الآن</button>
+            </div>
+            <div class="product-card">
+                <img src="images/drill.png" alt="مثقاب">
+                <h3>مثقاب كهربائي</h3>
+                <p>سعر: 250 جنيه</p>
+                <button>اشترِ الآن</button>
+            </div>
+            <div class="product-card">
+                <img src="images/saw.png" alt="منشار">
+                <h3>منشار يدوي</h3>
+                <p>سعر: 150 جنيه</p>
+                <button>اشترِ الآن</button>
+            </div>
+        </div>
+    </section>
 
-<!-- Sidebar Categories -->
-<aside class="sidebar">
-  <h3>الأقسام</h3>
-  <ul>
-    <li data-category="all" class="active">الكل</li>
-    <li data-category="electric">أدوات كهربائية</li>
-    <li data-category="hand">أدوات يدوية</li>
-  </ul>
-</aside>
-
-<!-- Products Grid -->
-<main id="productsGrid"></main>
-
-<!-- Pagination -->
-<div id="pagination" class="pagination"></div>
-
-<!-- Cart Sidebar -->
-<div id="cartSidebar" class="cart-sidebar">
-  <span class="close-cart">&times;</span>
-  <h3>سلة التسوق</h3>
-  <div id="cartItems"></div>
-  <p>الإجمالي: $<span id="cartTotal">0</span></p>
-  <button id="checkoutBtn">Checkout</button>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
