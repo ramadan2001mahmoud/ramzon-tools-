@@ -8,84 +8,49 @@
 </head>
 <body>
 
-<!-- Top Header -->
-<div class="top-header">
-  <div class="logo">تجملات</div>
-  <input type="text" placeholder="ابحث هنا...">
-</div>
+<!-- Header -->
+<header class="header">
+  <div class="logo">Ramzon</div>
+
+  <input type="text" id="search" placeholder="ابحث عن منتج...">
+
+  <div class="header-icons">
+    <div id="cart-btn">🛒 <span id="cart-count">0</span></div>
+  </div>
+</header>
 
 <!-- Navbar -->
-<nav class="navbar">
+<nav class="nav">
   <ul>
-    <li>الصفحة الرئيسية</li>
-    <li>الأزياء</li>
-    <li>الأثاث</li>
-    <li>الأجهزة المنزلية</li>
-    <li>الجمال والعطور</li>
-    <li>الرياضة والترفيه</li>
+    <li data-cat="all">الكل</li>
+    <li data-cat="electronics">إلكترونيات</li>
+    <li data-cat="tools">أدوات</li>
+    <li data-cat="perfume">عطور</li>
   </ul>
 </nav>
 
 <!-- Banner -->
 <section class="banner">
-  <div class="banner-text">
+  <div class="banner-content">
     <h1>خصومات قوية</h1>
-    <p>عروض لا تقاوم على أفضل المنتجات!</p>
-    <button>تسوق الآن</button>
-  </div>
-</section>
-
-<!-- Categories -->
-<section class="categories">
-  <div class="cat">
-    <img src="https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg">
-    <h3>أحدث الإلكترونيات</h3>
-    <button>تسوق الآن</button>
-  </div>
-
-  <div class="cat">
-    <img src="https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg">
-    <h3>عطور ومستحضرات</h3>
-    <button>تسوق الآن</button>
-  </div>
-
-  <div class="cat">
-    <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg">
-    <h3>أحذية رياضية</h3>
-    <button>تسوق الآن</button>
-  </div>
-
-  <div class="cat">
-    <img src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg">
-    <h3>توصيل سريع</h3>
+    <p>أفضل المنتجات بأسعار رهيبة</p>
     <button>تسوق الآن</button>
   </div>
 </section>
 
 <!-- Products -->
 <section class="products">
-  <h2>تسوق المزيد</h2>
-
-  <div class="grid">
-
-    <div class="product">
-      <img src="https://images.pexels.com/photos/5081395/pexels-photo-5081395.jpeg">
-    </div>
-
-    <div class="product">
-      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg">
-    </div>
-
-    <div class="product">
-      <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg">
-    </div>
-
-    <div class="product">
-      <img src="https://images.pexels.com/photos/373946/pexels-photo-373946.jpeg">
-    </div>
-
-  </div>
+  <h2>أفضل المنتجات</h2>
+  <div id="products-container"></div>
 </section>
 
+<!-- Cart -->
+<div id="cart" class="cart">
+  <h3>سلة الشراء</h3>
+  <div id="cart-items"></div>
+  <p>الإجمالي: $<span id="total">0</span></p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
