@@ -1,56 +1,48 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramzon</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- Header -->
+<!-- Header PRO -->
 <header class="header">
+
   <div class="logo">Ramzon</div>
 
-  <input type="text" id="search" placeholder="ابحث عن منتج...">
+  <div class="search-box">
+    <input type="text" id="search" placeholder="ابحث عن أي منتج...">
+    <button>🔍</button>
+  </div>
 
   <div class="header-icons">
+    <div class="account">👤 الحساب</div>
     <div id="cart-btn">🛒 <span id="cart-count">0</span></div>
   </div>
+
 </header>
 
-<!-- Navbar -->
+<!-- NAVBAR PRO -->
 <nav class="nav">
+
   <ul>
-    <li data-cat="all">الكل</li>
-    <li data-cat="electronics">إلكترونيات</li>
-    <li data-cat="tools">أدوات</li>
-    <li data-cat="perfume">عطور</li>
+    <li class="menu">الإلكترونيات
+      <div class="dropdown">
+        <a href="#">موبايلات</a>
+        <a href="#">لابتوبات</a>
+        <a href="#">كاميرات</a>
+      </div>
+    </li>
+
+    <li class="menu">الأدوات
+      <div class="dropdown">
+        <a href="#">مطارق</a>
+        <a href="#">مثاقب</a>
+        <a href="#">معدات</a>
+      </div>
+    </li>
+
+    <li class="menu">العطور
+      <div class="dropdown">
+        <a href="#">رجالي</a>
+        <a href="#">نسائي</a>
+      </div>
+    </li>
+
+    <li class="menu">الرياضة</li>
   </ul>
+
 </nav>
-
-<!-- Banner -->
-<section class="banner">
-  <div class="banner-content">
-    <h1>خصومات قوية</h1>
-    <p>أفضل المنتجات بأسعار رهيبة</p>
-    <button>تسوق الآن</button>
-  </div>
-</section>
-
-<!-- Products -->
-<section class="products">
-  <h2>أفضل المنتجات</h2>
-  <div id="products-container"></div>
-</section>
-
-<!-- Cart -->
-<div id="cart" class="cart">
-  <h3>سلة الشراء</h3>
-  <div id="cart-items"></div>
-  <p>الإجمالي: $<span id="total">0</span></p>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
