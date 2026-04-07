@@ -1,45 +1,136 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramzon</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramzon - Shop Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-store"></i>
+                    <h1>Ramzon</h1>
+                </div>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search Ramzon...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">Ramzon</div>
+                <div class="header-icons">
+                    <div class="language-selector">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </div>
+                    <i class="fas fa-user" id="userIcon"></i>
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </div>
 
-  <div class="search">
-    <input id="searchInput" placeholder="ابحث عن منتج...">
-    <button id="searchBtn">🔍</button>
-  </div>
+            <nav class="categories">
+                <a href="#" data-category="all" class="category-btn active">
+                    <i class="fas fa-th"></i> All
+                </a>
+                <a href="#" data-category="electronics" class="category-btn">
+                    <i class="fas fa-mobile-alt"></i> Electronics
+                </a>
+                <a href="#" data-category="fashion" class="category-btn">
+                    <i class="fas fa-tshirt"></i> Fashion
+                </a>
+                <a href="#" data-category="home" class="category-btn">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" data-category="books" class="category-btn">
+                    <i class="fas fa-book"></i> Books
+                </a>
+            </nav>
+        </div>
+    </header>
 
-  <div class="actions">
-    <span id="cartBtn">🛒 (<span id="cartCount">0</span>)</span>
-  </div>
-</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Discover Amazing Deals on Ramzon</h2>
+            <p>Electronics, Fashion, Home essentials & more. Fast delivery!</p>
+            <button class="cta-btn">Shop Now</button>
+        </div>
+    </section>
 
-<!-- NAVBAR -->
-<nav class="nav">
-  <ul>
-    <li data-cat="all">الكل</li>
-    <li data-cat="electronics">إلكترونيات</li>
-    <li data-cat="tools">أدوات</li>
-    <li data-cat="perfume">عطور</li>
-  </ul>
-</nav>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="name">Name</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Price:</label>
+                    <input type="range" id="priceRange" min="0" max="50000" value="50000">
+                    <span id="priceValue">₹50,000</span>
+                </div>
+            </div>
 
-<!-- PRODUCTS -->
-<section class="products">
-  <div id="products"></div>
-</section>
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </main>
 
-<!-- CART -->
-<div id="cart" class="cart"></div>
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Shopping Cart</h3>
+                <span class="close" id="closeCart">&times;</span>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-total">
+                <span>Total: <strong id="cartTotal">₹0</strong></span>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
 
-<script src="script.js"></script>
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content product-modal">
+            <div class="modal-header">
+                <h3 id="productTitle"></h3>
+                <span class="close" id="closeProduct">&times;</span>
+            </div>
+            <div class="product-details">
+                <img id="productImage" src="" alt="">
+                <div class="product-info">
+                    <div class="price-section">
+                        <span class="price" id="productPrice"></span>
+                        <span class="original-price" id="originalPrice"></span>
+                    </div>
+                    <div class="rating" id="productRating"></div>
+                    <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+                    <p id="productDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
