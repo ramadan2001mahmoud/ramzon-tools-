@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramzon - Shop Online</title>
+    <title>رمزون - تسوق اونلاين</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -14,20 +14,22 @@
             <div class="header-top">
                 <div class="logo">
                     <i class="fas fa-store"></i>
-                    <h1>Ramzon</h1>
+                    <h1 id="siteTitle">رمزون</h1>
                 </div>
                 
                 <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="Search Ramzon...">
+                    <input type="text" id="searchInput" placeholder="ابحث في رمزون...">
                     <button id="searchBtn"><i class="fas fa-search"></i></button>
                 </div>
 
                 <div class="header-icons">
                     <div class="language-selector">
-                        <i class="fas fa-globe"></i>
-                        <span>EN</span>
+                        <select id="languageSelect">
+                            <option value="ar">العربية</option>
+                            <option value="en">English</option>
+                        </select>
                     </div>
-                    <i class="fas fa-user" id="userIcon"></i>
+                    <i class="fas fa-user" id="userIcon" title="حسابي"></i>
                     <div class="cart-icon" id="cartIcon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count" id="cartCount">0</span>
@@ -35,22 +37,8 @@
                 </div>
             </div>
 
-            <nav class="categories">
-                <a href="#" data-category="all" class="category-btn active">
-                    <i class="fas fa-th"></i> All
-                </a>
-                <a href="#" data-category="electronics" class="category-btn">
-                    <i class="fas fa-mobile-alt"></i> Electronics
-                </a>
-                <a href="#" data-category="fashion" class="category-btn">
-                    <i class="fas fa-tshirt"></i> Fashion
-                </a>
-                <a href="#" data-category="home" class="category-btn">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="#" data-category="books" class="category-btn">
-                    <i class="fas fa-book"></i> Books
-                </a>
+            <nav class="categories" id="categoriesNav">
+                <!-- Categories will be populated by JS -->
             </nav>
         </div>
     </header>
@@ -58,9 +46,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Discover Amazing Deals on Ramzon</h2>
-            <p>Electronics, Fashion, Home essentials & more. Fast delivery!</p>
-            <button class="cta-btn">Shop Now</button>
+            <h2 id="heroTitle">اكتشف العروض المذهلة في رمزون</h2>
+            <p id="heroSubtitle">إلكترونيات، أزياء، أدوات منزلية وأكثر. توصيل سريع!</p>
+            <button class="cta-btn" id="shopNowBtn">تسوق الآن</button>
         </div>
     </section>
 
@@ -70,24 +58,24 @@
             <!-- Filters -->
             <div class="filters">
                 <div class="filter-group">
-                    <label>Sort by:</label>
+                    <label id="sortLabel">ترتيب حسب:</label>
                     <select id="sortSelect">
-                        <option value="name">Name</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="rating">Rating</option>
+                        <option value="name">الاسم</option>
+                        <option value="price-low">السعر: من الأقل للأعلى</option>
+                        <option value="price-high">السعر: من الأعلى للأقل</option>
+                        <option value="rating">التقييم</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label>Price:</label>
-                    <input type="range" id="priceRange" min="0" max="50000" value="50000">
-                    <span id="priceValue">₹50,000</span>
+                    <label id="priceLabel">السعر:</label>
+                    <input type="range" id="priceRange" min="0" max="100000" value="100000">
+                    <span id="priceValue">100,000 ر.س</span>
                 </div>
             </div>
 
             <!-- Products Grid -->
             <div class="products-grid" id="productsGrid">
-                <!-- Products will be loaded here by JavaScript -->
+                <!-- Products loaded by JS -->
             </div>
         </div>
     </main>
@@ -96,37 +84,13 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Shopping Cart</h3>
+                <h3 id="cartTitle">سلة التسوق</h3>
                 <span class="close" id="closeCart">&times;</span>
             </div>
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will be loaded here -->
-            </div>
+            <div class="cart-items" id="cartItems"></div>
             <div class="cart-total">
-                <span>Total: <strong id="cartTotal">₹0</strong></span>
-                <button class="checkout-btn">Proceed to Checkout</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Product Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content product-modal">
-            <div class="modal-header">
-                <h3 id="productTitle"></h3>
-                <span class="close" id="closeProduct">&times;</span>
-            </div>
-            <div class="product-details">
-                <img id="productImage" src="" alt="">
-                <div class="product-info">
-                    <div class="price-section">
-                        <span class="price" id="productPrice"></span>
-                        <span class="original-price" id="originalPrice"></span>
-                    </div>
-                    <div class="rating" id="productRating"></div>
-                    <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
-                    <p id="productDescription"></p>
-                </div>
+                <span id="totalLabel">الإجمالي: <strong id="cartTotal">0 ر.س</strong></span>
+                <button class="checkout-btn" id="checkoutBtn">إتمام الشراء</button>
             </div>
         </div>
     </div>
