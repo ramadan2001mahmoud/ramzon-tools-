@@ -1,61 +1,35 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رمزون - تسوق اونلاين</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramzon - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-top">
-                <div class="logo">
-                    <i class="fas fa-store"></i>
-                    <h1 id="siteTitle">رمزون</h1>
-                </div>
-                
-                <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="ابحث في رمزون...">
-                    <button id="searchBtn"><i class="fas fa-search"></i></button>
-                </div>
+<body class="bg-gray-100">
 
-                <div class="header-icons">
-                    <div class="language-selector">
-                        <select id="languageSelect">
-                            <option value="ar">العربية</option>
-                            <option value="en">English</option>
-                        </select>
-                    </div>
-                    <i class="fas fa-user" id="userIcon" title="حسابي"></i>
-                    <div class="cart-icon" id="cartIcon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </div>
-                </div>
-            </div>
+  <!-- Navbar -->
+  <div id="navbar"></div>
 
-            <nav class="categories" id="categoriesNav">
-                <!-- الفئات سيتم تحميلها بواسطة JS -->
-            </nav>
-        </div>
-    </header>
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white p-10 text-center">
+    <h1 class="text-4xl font-bold mb-2">Welcome to Ramzon</h1>
+    <p class="text-lg">Your one-stop shop for electronics, perfumes, and clothes!</p>
+    <button class="mt-4 px-6 py-3 bg-yellow-400 font-bold rounded">Shop Now</button>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2 id="heroTitle">اكتشف العروض المذهلة في رمزون</h2>
-            <p id="heroSubtitle">إلكترونيات، أزياء، أدوات منزلية وأكثر. توصيل سريع!</p>
-            <button class="cta-btn" id="shopNowBtn">تسوق الآن</button>
-        </div>
-    </section>
+  <!-- Product Listing -->
+  <section class="p-10">
+    <h2 class="text-2xl font-bold mb-6">Featured Products</h2>
+    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Product cards will be injected here by JS -->
+    </div>
+  </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Filters -->
-            <div class="filters">
-                <div class
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
