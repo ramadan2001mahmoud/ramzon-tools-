@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Product Details</title>
-  <link rel="stylesheet" href="product.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product</title>
+<link rel="stylesheet" href="product.css">
 </head>
 <body>
 
-<header>
-  <div class="logo">Ramzon Tools</div>
-  <a href="index.html">← Back to Shop</a>
+<header class="header">
+  <div class="logo">Ramzon</div>
 </header>
 
-<main id="productDetail"></main>
+<div class="product-page">
+
+  <div class="images">
+    <img id="main-img" src="">
+  </div>
+
+  <div class="details">
+    <h1 id="name"></h1>
+    <div id="stars"></div>
+    <h2 id="price"></h2>
+
+    <button onclick="addToCart()">🛒 Add to Cart</button>
+    <button onclick="addToWish()">❤️ Wishlist</button>
+  </div>
+
+</div>
 
 <script src="product.js"></script>
 </body>
