@@ -1,10 +1,21 @@
-body{
-  margin:0;
-  font-family:Arial;
-  background:#f3f3f3;
+/* SEARCH */
+.search-box{
+  display:flex;
+  width:50%;
+}
+.search-box input{
+  width:100%;
+  padding:8px;
+  border:none;
+}
+.search-box button{
+  background:#ff9900;
+  border:none;
+  padding:8px;
+  cursor:pointer;
 }
 
-/* Header */
+/* HEADER */
 .header{
   background:#131921;
   color:#fff;
@@ -13,90 +24,47 @@ body{
   justify-content:space-between;
   padding:10px 20px;
 }
-.logo{font-size:22px;color:#ff9900;font-weight:bold;}
 
-.header input{
-  width:50%;
-  padding:8px;
-  border-radius:4px;
-  border:none;
-}
-
-#cart-btn{
-  cursor:pointer;
-}
-
-/* Navbar */
+/* NAV */
 .nav{
   background:#232f3e;
-  color:#fff;
 }
 .nav ul{
   display:flex;
-  gap:20px;
   list-style:none;
-  padding:10px;
-}
-.nav li{
-  cursor:pointer;
-}
-
-/* Banner */
-.banner{
-  height:300px;
-  background:url('https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg') center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  gap:30px;
+  padding:10px 20px;
   color:#fff;
 }
-.banner-content h1{
-  color:#ff9900;
-}
 
-/* Products */
-.products{
-  padding:20px;
-}
-
-#products-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#fff;
-  padding:10px;
-  border-radius:10px;
-  transition:0.3s;
-}
-.card:hover{
-  transform:scale(1.03);
-}
-
-.card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
-
-.card button{
-  width:100%;
-  background:#ff9900;
-  border:none;
-  padding:8px;
+.menu{
+  position:relative;
   cursor:pointer;
 }
 
-/* Cart */
-.cart{
-  position:fixed;
-  right:-300px;
-  top:0;
-  width:300px;
-  height:100%;
+/* DROPDOWN */
+.dropdown{
+  position:absolute;
+  top:40px;
+  left:0;
   background:#fff;
-  padding:15px;
-  transition:0.3s;
+  color:#000;
+  display:none;
+  flex-direction:column;
+  min-width:150px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.dropdown a{
+  padding:10px;
+  text-decoration:none;
+  color:#000;
+}
+.dropdown a:hover{
+  background:#eee;
+}
+
+/* SHOW MENU */
+.menu:hover .dropdown{
+  display:flex;
 }
